@@ -1,4 +1,4 @@
-package model;
+package com.codecool.todoapp.model;
 
 import java.util.ArrayList;
 import java.util.List;

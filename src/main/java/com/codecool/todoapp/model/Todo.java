@@ -1,4 +1,4 @@
-package model;
+package com.codecool.todoapp.model;
 
 public class Todo {
 
