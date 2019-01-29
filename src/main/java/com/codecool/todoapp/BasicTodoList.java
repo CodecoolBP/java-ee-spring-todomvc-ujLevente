@@ -7,16 +7,16 @@
 //
 //import static spark.Spark.*;
 //
-//public class BasicTodoList {
+//static class BasicTodoList {
 //
 //    private static final String SUCCESS = "{\"success\":true}";
 //
-//    public static void main(String[] args) {
+//    static static void main(String[] args) {
 //
 //        addSampleData();
 //
 //        exception(Exception.class, (e, req, res) -> e.printStackTrace()); // print all exceptions
-//        staticFiles.location("/public");
+//        staticFiles.location("/static");
 //        port(9999);
 //
 //        // Add new
