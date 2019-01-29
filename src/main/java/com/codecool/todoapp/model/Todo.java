@@ -1,5 +1,8 @@
 package com.codecool.todoapp.model;
 
+import lombok.Data;
+
+@Data
 public class Todo {
 
     private String title;
@@ -13,30 +16,6 @@ public class Todo {
         this.status = status;
     }
 
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public Status getStatus() {
-        return status;
-    }
-
-    public void setStatus(Status status) {
-        this.status = status;
-    }
-
     public boolean isComplete() {
         return this.status == Status.COMPLETE;
     }
@@ -44,14 +23,5 @@ public class Todo {
     public static Todo create(String title) {
         _idCounter++;
         return new Todo(title, String.valueOf(_idCounter), Status.ACTIVE);
-    }
-
-    @Override
-    public String toString() {
-        return "Todo{" +
-                "title='" + title + '\'' +
-                ", id='" + id + '\'' +
-                ", status=" + status +
-                '}';
     }
 }
