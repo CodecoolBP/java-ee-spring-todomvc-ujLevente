@@ -1,5 +1,6 @@
 package com.codecool.todoapp;
 
+import com.codecool.todoapp.model.Status;
 import com.codecool.todoapp.model.Todo;
 import com.codecool.todoapp.model.TodoDao;
 import lombok.extern.java.Log;
@@ -18,6 +19,9 @@ public class BasicTodoListApplication {
 
     @PostConstruct
     private static void addSampleData() {
+        Todo sample = Todo.create("check");
+        sample.setStatus(Status.COMPLETE);
+        TodoDao.add(sample);
         TodoDao.add(Todo.create("first TODO item"));
         TodoDao.add(Todo.create("second TODO item"));
         TodoDao.add(Todo.create("third TODO item"));

@@ -68,7 +68,8 @@ class View {
             let clone = document.importNode(row.content, true);
 
             clone.querySelector("li").dataset.id = item.id;
-            if (item.completed) {
+            // if (item.completed) {
+            if (item.status === "COMPLETE") {
                 clone.querySelector("li").className = "completed";
                 clone.querySelector(".toggle").checked = true;
             }
