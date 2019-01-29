@@ -46,4 +46,12 @@ public class Todo {
         return new Todo(title, String.valueOf(_idCounter), Status.ACTIVE);
     }
 
+    @Override
+    public String toString() {
+        return "Todo{" +
+                "title='" + title + '\'' +
+                ", id='" + id + '\'' +
+                ", status=" + status +
+                '}';
+    }
 }
