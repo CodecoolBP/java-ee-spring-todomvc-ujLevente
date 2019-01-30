@@ -1,5 +1,5 @@
 //
-//import com.codecool.todoapp.model.Todo;
+//import Todo;
 //import com.codecool.todoapp.model.TodoDao;
 //import org.json.JSONArray;
 //import org.json.JSONObject;

@@ -3,13 +3,14 @@ package com.codecool.todoapp.model;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 
-//@DataJpaTest
+@DataJpaTest
 @ActiveProfiles("test")
 @RunWith(SpringRunner.class)
 public class TodoTest {
@@ -32,14 +33,6 @@ public class TodoTest {
         assertThat(testTodo.getTitle().equals(SAMPLE_TITLE));
         assertThat(testTodo.getId().equals("1"));
         assertThat(testTodo.toString()).isNotNull();
-    }
-
-    @Test
-    public void idIncrementAutomatically() {
-        int firstId = Integer.parseInt(testTodo.getId());
-        int secondId = Integer.parseInt(Todo.create("sample title2").getId());
-
-        assertThat(++firstId == secondId);
     }
 
 
