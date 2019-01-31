@@ -2,8 +2,8 @@ package com.codecool.todoapp.repositories.dao;
 
 import com.codecool.todoapp.model.Todo;
 import com.codecool.todoapp.repositories.TodoRepository;
+import org.junit.After;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,8 +40,27 @@ public class TodoDaoTest {
 
     @Test
     public void addOneSimple() {
-//        todoDao.add(testTodo);
         todoDao.add(testTodo);
+
         assertThat(todoRepository.findAll()).hasSize(1);
+    }
+
+    @Test
+    public void getTodoById() {
+        todoRepository.save(testTodo);
+
+        assertThat(todoDao.find(testTodo.getId())).isEqualTo(testTodo);
+    }
+
+    @Test
+    public void updateOneByTitleAndId() {
+        todoRepository.save(testTodo);
+        String newTitle = "changed title";
+
+        todoDao.update(testTodo.getId(), newTitle);
+
+        String title = todoRepository.findAll().get(0).getTitle();
+        System.out.println(title + "||||||||||||||||||||||||||");
+        assertThat(title).isEqualTo(newTitle);
     }
 }

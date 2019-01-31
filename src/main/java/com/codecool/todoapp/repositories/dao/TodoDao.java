@@ -4,14 +4,11 @@ import com.codecool.todoapp.model.Status;
 import com.codecool.todoapp.model.Todo;
 import com.codecool.todoapp.repositories.TodoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
-@Component
+@Service
 public class TodoDao {
 
 //    private static final List<Todo> DATA = new ArrayList<>();
@@ -28,17 +25,20 @@ public class TodoDao {
         todoRepository.save(todo);
     }
 
-//    public static Todo find(String id) {
+    public Todo find(Long id) {
 //        return DATA.stream().filter(t -> t.getId().equals(id)).findFirst().orElse(null);
-//    }
-//
-//    public static void update(String id, String title) {
+        return todoRepository.getOne(id);
+    }
+
+    public void update(Long id, String title) {
 //        find(id).setTitle(title);
-//    }
-//
-//    public static List<Todo> ofStatus(String statusString) {
+        todoRepository.updateTodoTitleById(id, title);
+    }
+
+    public List<Todo> ofStatus(String statusString) {
 //        return (statusString == null || statusString.isEmpty()) ? DATA : ofStatus(Status.valueOf(statusString.toUpperCase()));
-//    }
+        return null;
+    }
 //
 //    public static List<Todo> ofStatus(Status status) {
 //        return DATA.stream().filter(t -> t.getStatus().equals(status)).collect(Collectors.toList());

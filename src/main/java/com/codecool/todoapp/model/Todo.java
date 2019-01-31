@@ -12,7 +12,6 @@ public class Todo {
 
     @Id
     @GeneratedValue
-    @Setter(AccessLevel.NONE)
     private Long id;
 
     private String title;

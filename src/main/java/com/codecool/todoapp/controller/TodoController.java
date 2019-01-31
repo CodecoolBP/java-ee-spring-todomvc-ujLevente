@@ -55,7 +55,7 @@ public class TodoController {
 //    }
 //
 //    @GetMapping("/todos/{id}")
-//    public String findById(@PathVariable(value="id") String id) {
+//    public String findById(@PathVariable(value="id") Long id) {
 //        log.info("find todo by id :" + id + "tod found: " + TodoDao.find(id));
 //        return TodoDao.find(id).getTitle();
 //    }
