@@ -4,13 +4,11 @@ import com.codecool.todoapp.model.Status;
 import com.codecool.todoapp.model.Todo;
 import com.codecool.todoapp.repositories.TodoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@Component
 public class TodoDao {
 
     private static final List<Todo> DATA = new ArrayList<>();
@@ -18,9 +16,10 @@ public class TodoDao {
     @Autowired
     private TodoRepository todoRepository;
 
-    public static void add(Todo todo) {
-        DATA.add(todo);
-//        todoRepository.save(todo);
+    public void add(Todo todo) {
+        System.out.println(todoRepository + "||||");
+//        DATA.add(todo);
+        todoRepository.save(todo);
     }
 
 //    public static Todo find(String id) {

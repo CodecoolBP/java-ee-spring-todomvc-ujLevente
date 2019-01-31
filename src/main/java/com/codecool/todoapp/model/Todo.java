@@ -1,8 +1,6 @@
 package com.codecool.todoapp.model;
 
-import lombok.AccessLevel;
-import lombok.Data;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,6 +8,8 @@ import javax.persistence.Id;
 
 @Data
 @Entity
+@AllArgsConstructor
+@NoArgsConstructor
 public class Todo {
 
     @Id
@@ -21,17 +21,13 @@ public class Todo {
     private Status status;
     private static int _idCounter = 0;
 
-    private Todo(String title, Status status) {
+    public Todo(String title) {
         this.title = title;
-        this.status = status;
+        this.status = Status.ACTIVE;
     }
 
     public boolean isComplete() {
         return this.status == Status.COMPLETE;
     }
 
-    public static Todo create(String title) {
-        _idCounter++;
-        return new Todo(title, Status.ACTIVE);
-    }
 }

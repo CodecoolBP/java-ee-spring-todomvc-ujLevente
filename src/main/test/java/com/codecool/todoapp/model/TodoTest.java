@@ -20,7 +20,7 @@ public class TodoTest {
 
     @Before
     public void beforeEach() {
-        testTodo = Todo.create(SAMPLE_TITLE);
+        testTodo = new Todo(SAMPLE_TITLE);
     }
 
     @Test
@@ -31,7 +31,7 @@ public class TodoTest {
     @Test
     public void testFields() {
         assertThat(testTodo.getTitle().equals(SAMPLE_TITLE));
-        assertThat(testTodo.getId().equals("1"));
+        assertThat(testTodo.getId()).isNotNull();
         assertThat(testTodo.toString()).isNotNull();
     }
 
