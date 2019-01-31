@@ -5,6 +5,7 @@ import com.codecool.todoapp.model.Todo;
 import com.codecool.todoapp.repositories.TodoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,10 +14,14 @@ import java.util.stream.Collectors;
 @Component
 public class TodoDao {
 
-    private static final List<Todo> DATA = new ArrayList<>();
+//    private static final List<Todo> DATA = new ArrayList<>();
+
+    private TodoRepository todoRepository;
 
     @Autowired
-    private TodoRepository todoRepository;
+    public TodoDao(TodoRepository todoRepository) {
+        this.todoRepository = todoRepository;
+    }
 
     public void add(Todo todo) {
 //        DATA.add(todo);

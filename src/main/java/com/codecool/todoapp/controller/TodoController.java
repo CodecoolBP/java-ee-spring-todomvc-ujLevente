@@ -1,11 +1,7 @@
 package com.codecool.todoapp.controller;
 
-import com.codecool.todoapp.model.Todo;
-import com.codecool.todoapp.repositories.dao.TodoDao;
 import lombok.extern.java.Log;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @Log
 @RestController
