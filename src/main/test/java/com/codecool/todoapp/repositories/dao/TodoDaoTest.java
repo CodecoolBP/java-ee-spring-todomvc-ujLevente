@@ -106,10 +106,10 @@ public class TodoDaoTest {
     public void toggleStatusById() {
         todoRepository.save(testTodo);
 
-        todoDao.toggleStatus(testTodo.getId(), false);
+        todoDao.toggleStatus(testTodo.getId(), true);
         assertThat(todoRepository.findAll().get(0).getStatus()).isEqualTo(Status.COMPLETE);
 
-        todoDao.toggleStatus(testTodo.getId(), true);
+        todoDao.toggleStatus(testTodo.getId(), false);
         assertThat(todoRepository.findAll().get(0).getStatus()).isEqualTo(Status.ACTIVE);
     }
 
@@ -124,4 +124,11 @@ public class TodoDaoTest {
         assertThat(todoRepository.findAll().get(0).getStatus()).isEqualTo(Status.ACTIVE);
     }
 
+
+    @Test
+    public void getAll() {
+        todoRepository.save(testTodo);
+
+        assertThat(todoDao.all()).hasSize(1);
+    }
 }

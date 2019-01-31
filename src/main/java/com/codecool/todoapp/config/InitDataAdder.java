@@ -21,12 +21,6 @@ public class InitDataAdder {
 
     @PostConstruct
     private void addSampleData() {
-//        Todo sample = Todo.create("check");
-//        sample.setStatus(Status.COMPLETE);
-//        TodoDao.add(sample);
         todoDao.add(new Todo("first TODO item"));
-//        TodoDao.add(Todo.create("second TODO item"));
-//        TodoDao.add(Todo.create("third TODO item"));
-//        log.info("sample data added");
     }
 }
