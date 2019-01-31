@@ -2,9 +2,7 @@ package com.codecool.todoapp.model;
 
 import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Data
 @Entity
@@ -18,8 +16,9 @@ public class Todo {
     private Long id;
 
     private String title;
+
+    @Enumerated(EnumType.STRING)
     private Status status;
-    private static int _idCounter = 0;
 
     public Todo(String title) {
         this.title = title;

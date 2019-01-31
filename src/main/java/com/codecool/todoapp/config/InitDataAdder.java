@@ -13,18 +13,21 @@ import javax.annotation.PostConstruct;
 @Profile("production")
 public class InitDataAdder {
 
-    private TodoDao todoDao = new TodoDao();
+    private TodoDao todoDao;
+    private TodoRepository todoRepository;
 
     @Autowired
-    private TodoRepository todoRepository;
+    public InitDataAdder(TodoDao todoDao, TodoRepository todoRepository) {
+        this.todoDao = todoDao;
+        this.todoRepository = todoRepository;
+    }
 
     @PostConstruct
     private void addSampleData() {
 //        Todo sample = Todo.create("check");
 //        sample.setStatus(Status.COMPLETE);
 //        TodoDao.add(sample);
-        todoRepository.save(new Todo("first TODO item"));
-        System.out.println(todoRepository.findAll());
+        todoDao.add(new Todo("first TODO item"));
 //        TodoDao.add(Todo.create("second TODO item"));
 //        TodoDao.add(Todo.create("third TODO item"));
 //        log.info("sample data added");

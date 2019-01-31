@@ -26,6 +26,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class TodoDaoTest {
 
 
+    @Autowired
     private Todo testTodo;
 //    private TodoDao todoDao = new TodoDao();
 
