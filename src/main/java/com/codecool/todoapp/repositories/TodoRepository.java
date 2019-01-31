@@ -16,4 +16,14 @@ public interface TodoRepository extends JpaRepository<Todo, Long> {
     void updateTodoTitleById(@Param("id") Long id, @Param("new_title") String newTitle);
 
     List<Todo> findTodosByStatus(Status status);
+
+    void deleteTodosByStatus(Status status);
+
+    @Modifying(clearAutomatically = true)
+    @Query("update Todo t set t.status = :status where t.id = :id")
+    void updateStatusById(@Param("id") Long id, @Param("status") Status status);
+
+    @Modifying(clearAutomatically = true)
+    @Query("update Todo t set t.status = :new_status where t.status = :old_status")
+    void updateStatusesFromTo(@Param("old_status") Status oldStatus, @Param("new_status") Status newStatus);
 }

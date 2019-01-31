@@ -6,6 +6,7 @@ import com.codecool.todoapp.repositories.TodoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Arrays;
 import java.util.List;
 
 @Service
@@ -36,36 +37,39 @@ public class TodoDao {
     }
 
     public List<Todo> ofStatus(String statusString) {
-//        return (statusString == null || statusString.isEmpty()) ? DATA : ofStatus(Status.valueOf(statusString.toUpperCase()));
-        return null;
+        if (statusString == null)
+            return todoRepository.findAll();
+
+        statusString = statusString.toUpperCase();
+
+        return Status.ACTIVE.toString().equals(statusString) || Status.COMPLETE.toString().equals(statusString) ?
+            todoRepository.findTodosByStatus(Status.valueOf(statusString)) : todoRepository.findAll();
     }
-//
-//    public static List<Todo> ofStatus(Status status) {
-//        return DATA.stream().filter(t -> t.getStatus().equals(status)).collect(Collectors.toList());
-//    }
-//
-//    public static void remove(String id) {
+
+    public void remove(Long id) {
 //        DATA.remove(find(id));
-//    }
-//
-//    public static void removeCompleted() {
+        todoRepository.deleteById(id);
+    }
+
+    public void removeCompleted() {
 //        ofStatus(Status.COMPLETE).forEach(t -> TodoDao.remove(t.getId()));
-//    }
-//
-//    public static void toggleStatus(String id, boolean isComplete) {
-//        Todo todo = find(id);
-//        if (isComplete) {
-//            todo.setStatus(Status.COMPLETE);
-//        } else {
-//            todo.setStatus(Status.ACTIVE);
-//        }
-//    }
-//
-//    public static void toggleAll(boolean complete) {
+        todoRepository.deleteTodosByStatus(Status.COMPLETE);
+    }
+
+    public void toggleStatus(Long id, boolean isComplete) {
+        Status newStatus = isComplete ? Status.ACTIVE : Status.COMPLETE;
+        todoRepository.updateStatusById(id, newStatus);
+    }
+
+    public void toggleAll(boolean complete) {
 //        TodoDao.all().forEach(t -> t.setStatus(complete ? Status.COMPLETE : Status.ACTIVE));
-//    }
-//
-//    public static List<Todo> all() {
+        Status from = complete ? Status.COMPLETE : Status.ACTIVE;
+        Status to = complete ? Status.ACTIVE : Status.COMPLETE;
+        todoRepository.updateStatusesFromTo(from, to);
+    }
+
+    public List<Todo> all() {
 //        return DATA;
-//    }
+        return todoRepository.findAll();
+    }
 }
